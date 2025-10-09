@@ -21,15 +21,23 @@ curasure/
   .gitignore
 ```
 
-## Milestone 1 Status
+## Milestone Status
 
-This milestone creates the repository scaffold only. It does not require external credentials or service setup.
+- Milestone 1: repository scaffold complete.
+- Milestone 2: backend foundation complete.
 
 ## Local Development
 
-Application code will be added in future milestones. For now, verify the scaffold with:
+Backend development:
 
 ```bash
-find curasure -maxdepth 3 -type f | sort
+cd backend
+npm install
+npm run dev
 ```
 
+Health check:
+
+```bash
+curl http://localhost:4000/health
+```
