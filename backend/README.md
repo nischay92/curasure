@@ -24,9 +24,27 @@ Expected response:
 ```json
 {
   "status": "ok",
-  "service": "curasure-backend"
+  "service": "curasure-backend",
+  "database": {
+    "status": "ok",
+    "state": "connected"
+  }
 }
 ```
 
-MongoDB, Firebase, Socket.IO, and role-based auth will be added in later milestones.
+## Environment
 
+Create a local `.env` file:
+
+```bash
+cp .env.example .env
+```
+
+Set:
+
+```env
+MONGODB_URI=mongodb+srv://...
+MONGODB_DB_NAME=curasure
+```
+
+Firebase, Socket.IO, and role-based auth will be added in later milestones.

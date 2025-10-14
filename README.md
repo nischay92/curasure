@@ -25,6 +25,8 @@ curasure/
 
 - Milestone 1: repository scaffold complete.
 - Milestone 2: backend foundation complete.
+- Milestone 3: MongoDB Atlas setup complete.
+- Milestone 4: MongoDB integration complete.
 
 ## Local Development
 
@@ -35,6 +37,14 @@ cd backend
 npm install
 npm run dev
 ```
+
+Required local environment:
+
+```bash
+cp .env.example .env
+```
+
+Then set `MONGODB_URI` in `backend/.env`.
 
 Health check:
 
