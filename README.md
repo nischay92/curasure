@@ -27,6 +27,8 @@ curasure/
 - Milestone 2: backend foundation complete.
 - Milestone 3: MongoDB Atlas setup complete.
 - Milestone 4: MongoDB integration complete.
+- Milestone 5: Firebase setup complete.
+- Milestone 6: Firebase Auth integration complete.
 
 ## Local Development
 
@@ -50,4 +52,11 @@ Health check:
 
 ```bash
 curl http://localhost:4000/health
+```
+
+Authenticated profile routes:
+
+```bash
+GET /auth/me
+POST /auth/profile
 ```
