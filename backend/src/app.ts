@@ -5,6 +5,7 @@ import morgan from "morgan";
 import { env } from "./config/env.js";
 import { errorHandler } from "./middleware/errorHandler.js";
 import { notFound } from "./middleware/notFound.js";
+import { authRoutes } from "./routes/authRoutes.js";
 import { healthRoutes } from "./routes/healthRoutes.js";
 
 export const createApp = () => {
@@ -28,10 +29,10 @@ export const createApp = () => {
   });
 
   app.use("/health", healthRoutes);
+  app.use("/auth", authRoutes);
 
   app.use(notFound);
   app.use(errorHandler);
 
   return app;
 };
-

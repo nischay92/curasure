@@ -16,5 +16,9 @@ export const env = {
   port: toNumber(process.env.PORT, 4000),
   frontendOrigin: process.env.FRONTEND_ORIGIN ?? "http://localhost:5173",
   mongodbUri: process.env.MONGODB_URI,
-  mongodbDbName: process.env.MONGODB_DB_NAME ?? "curasure"
+  mongodbDbName: process.env.MONGODB_DB_NAME ?? "curasure",
+  firebaseProjectId: process.env.FIREBASE_PROJECT_ID,
+  firebaseClientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+  firebasePrivateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
+  firebaseStorageBucket: process.env.FIREBASE_STORAGE_BUCKET
 };

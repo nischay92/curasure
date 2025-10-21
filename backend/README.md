@@ -45,6 +45,25 @@ Set:
 ```env
 MONGODB_URI=mongodb+srv://...
 MONGODB_DB_NAME=curasure
+FIREBASE_PROJECT_ID=...
+FIREBASE_CLIENT_EMAIL=...
+FIREBASE_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n"
+FIREBASE_STORAGE_BUCKET=...
 ```
 
-Firebase, Socket.IO, and role-based auth will be added in later milestones.
+## Auth Routes
+
+Routes expect a Firebase ID token in the `Authorization` header:
+
+```http
+Authorization: Bearer <firebase_id_token>
+```
+
+Available in this milestone:
+
+```http
+POST /auth/profile
+GET /auth/me
+```
+
+Socket.IO and full role-specific features will be added in later milestones.
