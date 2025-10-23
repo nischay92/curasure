@@ -1,0 +1,268 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  color: #17211b;
+  background: #f7faf8;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+a {
+  color: inherit;
+}
+
+.auth-shell {
+  display: grid;
+  min-height: 100vh;
+  grid-template-columns: minmax(0, 1fr) minmax(380px, 480px);
+  background: #f7faf8;
+}
+
+.auth-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 48px;
+  color: #f7fff9;
+  background:
+    linear-gradient(rgba(15, 84, 72, 0.86), rgba(15, 84, 72, 0.86)),
+    url("https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1600&q=80")
+      center / cover;
+}
+
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+.brand-icon {
+  display: inline-grid;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  border-radius: 8px;
+  color: #0f5448;
+  background: #d7f6e6;
+}
+
+.auth-panel h1 {
+  max-width: 720px;
+  margin: 0;
+  font-size: 52px;
+  line-height: 1.05;
+}
+
+.auth-panel p {
+  max-width: 620px;
+  margin: 18px 0 0;
+  color: #dff4e9;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.auth-card {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  padding: 48px;
+  background: #ffffff;
+}
+
+.auth-card h2 {
+  margin: 0 0 8px;
+  color: #14231d;
+  font-size: 30px;
+  line-height: 1.2;
+}
+
+.auth-card p {
+  margin: 0 0 28px;
+  color: #66746d;
+  line-height: 1.5;
+}
+
+.field {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.field label {
+  color: #26382f;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.field input,
+.field select {
+  width: 100%;
+  min-height: 46px;
+  border: 1px solid #cbd8d1;
+  border-radius: 8px;
+  padding: 0 14px;
+  color: #17211b;
+  background: #ffffff;
+}
+
+.field input:focus,
+.field select:focus {
+  border-color: #117b65;
+  outline: 3px solid rgba(17, 123, 101, 0.16);
+}
+
+.primary-button,
+.secondary-button {
+  display: inline-flex;
+  min-height: 46px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  padding: 0 18px;
+  font-weight: 800;
+}
+
+.primary-button {
+  width: 100%;
+  border: 0;
+  color: #ffffff;
+  background: #117b65;
+}
+
+.secondary-button {
+  border: 1px solid #cbd8d1;
+  color: #17211b;
+  background: #ffffff;
+}
+
+.auth-switch {
+  margin-top: 18px;
+  color: #53625a;
+  text-align: center;
+}
+
+.auth-switch a {
+  color: #117b65;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.alert {
+  margin-bottom: 18px;
+  border: 1px solid #f0b7b7;
+  border-radius: 8px;
+  padding: 12px 14px;
+  color: #7d1f1f;
+  background: #fff3f3;
+}
+
+.loading-screen {
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  color: #53625a;
+}
+
+.dashboard-shell {
+  min-height: 100vh;
+  background: #f7faf8;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #dfe8e2;
+  padding: 18px 32px;
+  background: #ffffff;
+}
+
+.dashboard-main {
+  width: min(1080px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 44px 0;
+}
+
+.dashboard-main h1 {
+  margin: 0 0 8px;
+  font-size: 34px;
+}
+
+.dashboard-main p {
+  max-width: 720px;
+  color: #5b6a62;
+  line-height: 1.6;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.dashboard-card {
+  min-height: 136px;
+  border: 1px solid #dfe8e2;
+  border-radius: 8px;
+  padding: 20px;
+  background: #ffffff;
+}
+
+.dashboard-card h2 {
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+
+@media (max-width: 840px) {
+  .auth-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .auth-panel {
+    min-height: 320px;
+    padding: 28px;
+  }
+
+  .auth-panel h1 {
+    font-size: 38px;
+  }
+
+  .auth-card {
+    min-height: auto;
+    padding: 32px 24px;
+  }
+
+  .topbar {
+    gap: 16px;
+    padding: 16px 20px;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
