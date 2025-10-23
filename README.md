@@ -29,6 +29,7 @@ curasure/
 - Milestone 4: MongoDB integration complete.
 - Milestone 5: Firebase setup complete.
 - Milestone 6: Firebase Auth integration complete.
+- Milestone 7: Auth UI complete.
 
 ## Local Development
 
@@ -59,4 +60,12 @@ Authenticated profile routes:
 ```bash
 GET /auth/me
 POST /auth/profile
+```
+
+Frontend auth routes:
+
+```bash
+http://localhost:5173/login
+http://localhost:5173/register
+http://localhost:5173/dashboard
 ```

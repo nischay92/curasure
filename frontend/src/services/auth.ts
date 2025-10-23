@@ -7,8 +7,7 @@ import {
 } from "firebase/auth";
 import { firebaseAuth } from "../config/firebase";
 import { api } from "./api";
-
-export type AppRole = "patient" | "doctor" | "insurance_provider" | "admin";
+import type { AppRole, AppProfile } from "../types/auth";
 
 export const registerWithEmail = (email: string, password: string) => {
   return createUserWithEmailAndPassword(firebaseAuth, email, password);
@@ -28,10 +27,10 @@ export const listenToAuthState = (callback: (user: User | null) => void) => {
 
 export const fetchCurrentProfile = async () => {
   const response = await api.get("/auth/me");
-  return response.data.user;
+  return response.data.user as AppProfile;
 };
 
 export const syncCurrentProfile = async (role: AppRole) => {
   const response = await api.post("/auth/profile", { role });
-  return response.data.user;
+  return response.data.user as AppProfile;
 };
