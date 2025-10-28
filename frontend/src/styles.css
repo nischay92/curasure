@@ -15,6 +15,7 @@ body {
 
 button,
 input,
+textarea,
 select {
   font: inherit;
 }
@@ -119,9 +120,9 @@ a {
 }
 
 .field input,
+.field textarea,
 .field select {
   width: 100%;
-  min-height: 46px;
   border: 1px solid #cbd8d1;
   border-radius: 8px;
   padding: 0 14px;
@@ -129,14 +130,27 @@ a {
   background: #ffffff;
 }
 
+.field input,
+.field select {
+  min-height: 46px;
+}
+
+.field textarea {
+  min-height: 120px;
+  padding: 12px 14px;
+  resize: vertical;
+}
+
 .field input:focus,
+.field textarea:focus,
 .field select:focus {
   border-color: #117b65;
   outline: 3px solid rgba(17, 123, 101, 0.16);
 }
 
 .primary-button,
-.secondary-button {
+.secondary-button,
+.primary-link-button {
   display: inline-flex;
   min-height: 46px;
   align-items: center;
@@ -151,6 +165,13 @@ a {
   border: 0;
   color: #ffffff;
   background: #117b65;
+}
+
+.primary-link-button {
+  border: 0;
+  color: #ffffff;
+  background: #117b65;
+  text-decoration: none;
 }
 
 .secondary-button {
@@ -178,6 +199,15 @@ a {
   padding: 12px 14px;
   color: #7d1f1f;
   background: #fff3f3;
+}
+
+.notice {
+  margin: 18px 0;
+  border: 1px solid #b9dfce;
+  border-radius: 8px;
+  padding: 12px 14px;
+  color: #174b38;
+  background: #effaf4;
 }
 
 .loading-screen {
@@ -238,6 +268,56 @@ a {
   font-size: 18px;
 }
 
+.dashboard-actions {
+  margin-top: 24px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 28px;
+}
+
+.form-grid .field {
+  margin-bottom: 0;
+}
+
+.form-span {
+  grid-column: 1 / -1;
+}
+
+.mode-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  border: 1px solid #dfe8e2;
+  border-radius: 8px;
+  padding: 16px;
+  background: #ffffff;
+}
+
+.mode-group legend {
+  padding: 0 6px;
+  color: #26382f;
+  font-weight: 800;
+}
+
+.mode-group label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.form-actions .primary-button {
+  width: auto;
+}
+
 @media (max-width: 840px) {
   .auth-shell {
     grid-template-columns: 1fr;
@@ -264,5 +344,13 @@ a {
 
   .dashboard-grid {
     grid-template-columns: 1fr;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-actions .primary-button {
+    width: 100%;
   }
 }

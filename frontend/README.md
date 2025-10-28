@@ -21,7 +21,7 @@ npm run preview
 /dashboard/doctor
 /dashboard/insurance
 /dashboard/admin
+/doctor/onboarding
 ```
 
 The app uses Firebase Auth on the client and syncs the selected role to the backend through `POST /auth/profile`.
-

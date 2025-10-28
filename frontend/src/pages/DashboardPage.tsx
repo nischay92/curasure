@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import type { AppRole } from "../types/auth";
 
@@ -22,7 +23,7 @@ const dashboardContent: Record<
     title: "Doctor dashboard",
     intro: "Manage your profile, availability, and patient conversations.",
     cards: [
-      { title: "Profile", body: "Doctor onboarding arrives in Milestone 8." },
+      { title: "Profile", body: "Complete onboarding and submit your profile for verification." },
       { title: "Availability", body: "Scheduling arrives in Milestone 11." },
       { title: "Messages", body: "Secure chat arrives in Milestone 13." }
     ]
@@ -55,6 +56,13 @@ export const DashboardPage = () => {
     <>
       <h1>{content.title}</h1>
       <p>{content.intro}</p>
+      {profile?.role === "doctor" && (
+        <div className="dashboard-actions">
+          <Link className="primary-link-button" to="/doctor/onboarding">
+            Complete doctor onboarding
+          </Link>
+        </div>
+      )}
       <section className="dashboard-grid" aria-label="Dashboard actions">
         {content.cards.map((card) => (
           <article className="dashboard-card" key={card.title}>
