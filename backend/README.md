@@ -66,4 +66,13 @@ POST /auth/profile
 GET /auth/me
 ```
 
+## Doctor Routes
+
+Doctor routes require a Firebase ID token and a CuraSure user role of `doctor`.
+
+```http
+GET /doctors/me
+PUT /doctors/me
+```
+
 Socket.IO and full role-specific features will be added in later milestones.

@@ -30,6 +30,7 @@ curasure/
 - Milestone 5: Firebase setup complete.
 - Milestone 6: Firebase Auth integration complete.
 - Milestone 7: Auth UI complete.
+- Milestone 8: Doctor onboarding complete.
 
 ## Local Development
 
@@ -68,4 +69,5 @@ Frontend auth routes:
 http://localhost:5173/login
 http://localhost:5173/register
 http://localhost:5173/dashboard
+http://localhost:5173/doctor/onboarding
 ```

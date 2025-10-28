@@ -3,10 +3,12 @@ import { AuthProvider } from "./context/AuthContext";
 import { AuthLayout } from "./layouts/AuthLayout";
 import { DashboardLayout } from "./layouts/DashboardLayout";
 import { DashboardPage } from "./pages/DashboardPage";
+import { DoctorOnboardingPage } from "./pages/DoctorOnboardingPage";
 import { LoginPage } from "./pages/LoginPage";
 import { RegisterPage } from "./pages/RegisterPage";
 import { DashboardRedirect } from "./routes/DashboardRedirect";
 import { ProtectedRoute } from "./routes/ProtectedRoute";
+import { RoleRoute } from "./routes/RoleRoute";
 
 export const App = () => {
   return (
@@ -24,6 +26,9 @@ export const App = () => {
             <Route path="/dashboard/doctor" element={<DashboardPage />} />
             <Route path="/dashboard/insurance" element={<DashboardPage />} />
             <Route path="/dashboard/admin" element={<DashboardPage />} />
+            <Route element={<RoleRoute allowedRoles={["doctor"]} />}>
+              <Route path="/doctor/onboarding" element={<DoctorOnboardingPage />} />
+            </Route>
           </Route>
         </Route>
         <Route path="*" element={<Navigate to="/dashboard" replace />} />
