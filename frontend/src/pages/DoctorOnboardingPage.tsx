@@ -15,6 +15,8 @@ const emptyForm: DoctorProfileInput = {
   city: "",
   state: "",
   zipCode: "",
+  latitude: undefined,
+  longitude: undefined,
   languages: [],
   acceptedInsurance: [],
   consultationModes: ["in_person"]
@@ -56,6 +58,8 @@ export const DoctorOnboardingPage = () => {
             city: doctor.city,
             state: doctor.state,
             zipCode: doctor.zipCode,
+            latitude: doctor.latitude,
+            longitude: doctor.longitude,
             languages: doctor.languages,
             acceptedInsurance: doctor.acceptedInsurance,
             consultationModes: doctor.consultationModes
@@ -231,6 +235,34 @@ export const DoctorOnboardingPage = () => {
             required
             value={form.zipCode}
             onChange={(event) => updateField("zipCode", event.target.value)}
+          />
+        </div>
+        <div className="field">
+          <label htmlFor="latitude">Latitude</label>
+          <input
+            id="latitude"
+            max={90}
+            min={-90}
+            step="any"
+            type="number"
+            value={form.latitude ?? ""}
+            onChange={(event) =>
+              updateField("latitude", event.target.value ? Number(event.target.value) : undefined)
+            }
+          />
+        </div>
+        <div className="field">
+          <label htmlFor="longitude">Longitude</label>
+          <input
+            id="longitude"
+            max={180}
+            min={-180}
+            step="any"
+            type="number"
+            value={form.longitude ?? ""}
+            onChange={(event) =>
+              updateField("longitude", event.target.value ? Number(event.target.value) : undefined)
+            }
           />
         </div>
         <div className="field">

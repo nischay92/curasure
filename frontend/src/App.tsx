@@ -4,6 +4,7 @@ import { AuthLayout } from "./layouts/AuthLayout";
 import { DashboardLayout } from "./layouts/DashboardLayout";
 import { DashboardPage } from "./pages/DashboardPage";
 import { DoctorOnboardingPage } from "./pages/DoctorOnboardingPage";
+import { DoctorSearchPage } from "./pages/DoctorSearchPage";
 import { LoginPage } from "./pages/LoginPage";
 import { RegisterPage } from "./pages/RegisterPage";
 import { DashboardRedirect } from "./routes/DashboardRedirect";
@@ -26,6 +27,9 @@ export const App = () => {
             <Route path="/dashboard/doctor" element={<DashboardPage />} />
             <Route path="/dashboard/insurance" element={<DashboardPage />} />
             <Route path="/dashboard/admin" element={<DashboardPage />} />
+            <Route element={<RoleRoute allowedRoles={["patient"]} />}>
+              <Route path="/doctors" element={<DoctorSearchPage />} />
+            </Route>
             <Route element={<RoleRoute allowedRoles={["doctor"]} />}>
               <Route path="/doctor/onboarding" element={<DoctorOnboardingPage />} />
             </Route>

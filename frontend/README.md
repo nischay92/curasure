@@ -21,7 +21,10 @@ npm run preview
 /dashboard/doctor
 /dashboard/insurance
 /dashboard/admin
+/doctors
 /doctor/onboarding
 ```
 
 The app uses Firebase Auth on the client and syncs the selected role to the backend through `POST /auth/profile`.
+
+The doctor search page uses Leaflet and OpenStreetMap. Markers render for doctor profiles with latitude and longitude values.
