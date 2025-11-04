@@ -33,6 +33,7 @@ curasure/
 - Milestone 8: Doctor onboarding complete.
 - Milestone 9: Patient dashboard and doctor search complete.
 - Milestone 10: Doctor map feature complete.
+- Milestone 11: Appointment scheduling complete with doctor-opened hourly slots.
 
 ## Local Development
 
@@ -72,6 +73,7 @@ http://localhost:5173/login
 http://localhost:5173/register
 http://localhost:5173/dashboard
 http://localhost:5173/doctors
+http://localhost:5173/appointments
 http://localhost:5173/doctor/onboarding
 ```
 

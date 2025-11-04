@@ -1,7 +1,9 @@
 import { FormEvent, useEffect, useMemo, useState } from "react";
 import { divIcon } from "leaflet";
 import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
+import { bookAppointment, fetchDoctorSlots } from "../services/appointments";
 import { searchDoctors, type DoctorSearchFilters } from "../services/doctors";
+import type { AvailabilitySlot } from "../types/appointment";
 import type { DoctorProfile } from "../types/doctor";
 import "leaflet/dist/leaflet.css";
 
@@ -37,8 +39,15 @@ export const DoctorSearchPage = () => {
     consultationMode: ""
   });
   const [doctors, setDoctors] = useState<DoctorProfile[]>([]);
+  const [bookingDoctorId, setBookingDoctorId] = useState<string | null>(null);
+  const [availableSlots, setAvailableSlots] = useState<AvailabilitySlot[]>([]);
+  const [selectedSlotId, setSelectedSlotId] = useState("");
+  const [appointmentReason, setAppointmentReason] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const [isLoadingSlots, setIsLoadingSlots] = useState(false);
+  const [isBooking, setIsBooking] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<string | null>(null);
 
   const mappedDoctors = useMemo(() => doctors.filter(hasCoordinates), [doctors]);
   const mapCenter = useMemo<[number, number]>(() => {
@@ -76,11 +85,61 @@ export const DoctorSearchPage = () => {
     void loadDoctors(filters);
   };
 
+  const startBooking = async (doctor: DoctorProfile) => {
+    setBookingDoctorId(doctor.id);
+    setAppointmentReason("");
+    setSelectedSlotId("");
+    setAvailableSlots([]);
+    setSuccess(null);
+    setError(null);
+    setIsLoadingSlots(true);
+
+    try {
+      const slots = await fetchDoctorSlots(doctor.id);
+      setAvailableSlots(slots);
+      setSelectedSlotId(slots[0]?.id ?? "");
+    } catch {
+      setError("Unable to load this doctor's open slots.");
+    } finally {
+      setIsLoadingSlots(false);
+    }
+  };
+
+  const handleBookAppointment = async (doctor: DoctorProfile) => {
+    setError(null);
+    setSuccess(null);
+    setIsBooking(true);
+
+    try {
+      await bookAppointment({
+        availabilitySlotId: selectedSlotId,
+        reason: appointmentReason,
+      });
+      setSuccess(`Appointment request sent to ${doctor.clinicName}.`);
+      setBookingDoctorId(null);
+      setSelectedSlotId("");
+      setAppointmentReason("");
+      setAvailableSlots([]);
+    } catch {
+      setError("Unable to book that appointment. Check the time and try again.");
+    } finally {
+      setIsBooking(false);
+    }
+  };
+
+  const formatSlot = (slot: AvailabilitySlot) => {
+    return `${new Intl.DateTimeFormat(undefined, {
+      dateStyle: "medium",
+      timeStyle: "short"
+    }).format(new Date(slot.startsAt))} - ${slot.visitMode.replace("_", " ")}`;
+  };
+
   return (
     <>
       <h1>Find doctors</h1>
       <p>Search CuraSure doctors by specialty, location, insurance, and visit mode.</p>
       {error && <div className="alert">{error}</div>}
+      {success && <div className="notice">{success}</div>}
       <form className="search-bar" onSubmit={handleSubmit}>
         <div className="field">
           <label htmlFor="specialty">Specialty</label>
@@ -160,6 +219,55 @@ export const DoctorSearchPage = () => {
                   <dd>{doctor.consultationModes.map((mode) => mode.replace("_", " ")).join(", ")}</dd>
                 </div>
               </dl>
+              {bookingDoctorId === doctor.id ? (
+                <div className="booking-panel">
+                  <div className="field">
+                    <label htmlFor={`slot-${doctor.id}`}>Open hourly slot</label>
+                    <select
+                      disabled={isLoadingSlots || availableSlots.length === 0}
+                      id={`slot-${doctor.id}`}
+                      value={selectedSlotId}
+                      onChange={(event) => setSelectedSlotId(event.target.value)}
+                    >
+                      {availableSlots.length === 0 && (
+                        <option value="">{isLoadingSlots ? "Loading slots..." : "No open slots"}</option>
+                      )}
+                      {availableSlots.map((slot) => (
+                        <option key={slot.id} value={slot.id}>
+                          {formatSlot(slot)}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  <div className="field booking-reason">
+                    <label htmlFor={`reason-${doctor.id}`}>Reason</label>
+                    <textarea
+                      id={`reason-${doctor.id}`}
+                      required
+                      rows={3}
+                      value={appointmentReason}
+                      onChange={(event) => setAppointmentReason(event.target.value)}
+                    />
+                  </div>
+                  <div className="booking-actions">
+                    <button
+                      className="primary-button"
+                      disabled={isBooking || !selectedSlotId || !appointmentReason}
+                      type="button"
+                      onClick={() => handleBookAppointment(doctor)}
+                    >
+                      {isBooking ? "Booking..." : "Book appointment"}
+                    </button>
+                    <button className="secondary-button" type="button" onClick={() => setBookingDoctorId(null)}>
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <button className="secondary-button" type="button" onClick={() => startBooking(doctor)}>
+                  Book appointment
+                </button>
+              )}
             </article>
           ))}
         </div>

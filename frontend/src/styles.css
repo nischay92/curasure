@@ -150,7 +150,8 @@ a {
 
 .primary-button,
 .secondary-button,
-.primary-link-button {
+.primary-link-button,
+.secondary-link-button {
   display: inline-flex;
   min-height: 46px;
   align-items: center;
@@ -178,6 +179,13 @@ a {
   border: 1px solid #cbd8d1;
   color: #17211b;
   background: #ffffff;
+}
+
+.secondary-link-button {
+  border: 1px solid #cbd8d1;
+  color: #17211b;
+  background: #ffffff;
+  text-decoration: none;
 }
 
 .auth-switch {
@@ -269,6 +277,9 @@ a {
 }
 
 .dashboard-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
   margin-top: 24px;
 }
 
@@ -442,6 +453,99 @@ a {
   font-size: 13px;
 }
 
+.booking-panel {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  border-top: 1px solid #dfe8e2;
+  padding-top: 16px;
+}
+
+.booking-panel .field {
+  margin-bottom: 0;
+}
+
+.booking-reason,
+.booking-actions {
+  grid-column: 1 / -1;
+}
+
+.booking-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.booking-actions .primary-button {
+  width: auto;
+}
+
+.appointment-list {
+  display: grid;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.slot-opener {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) 180px auto;
+  gap: 12px;
+  align-items: end;
+  border: 1px solid #dfe8e2;
+  border-radius: 8px;
+  margin: 28px 0;
+  padding: 18px;
+  background: #ffffff;
+}
+
+.slot-opener .field {
+  margin-bottom: 0;
+}
+
+.slot-opener .primary-button {
+  width: auto;
+}
+
+.appointment-card {
+  display: grid;
+  gap: 14px;
+  border: 1px solid #dfe8e2;
+  border-radius: 8px;
+  padding: 18px;
+  background: #ffffff;
+}
+
+.appointment-card h2 {
+  margin: 0 0 4px;
+  font-size: 20px;
+}
+
+.appointment-card p {
+  margin: 0;
+}
+
+.appointment-card dl {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0;
+}
+
+.appointment-card dt {
+  color: #66746d;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.appointment-card dd {
+  margin: 4px 0 0;
+}
+
+.appointment-reason {
+  grid-column: 1 / -1;
+}
+
 @media (max-width: 840px) {
   .auth-shell {
     grid-template-columns: 1fr;
@@ -480,7 +584,10 @@ a {
 
   .search-bar,
   .search-layout,
-  .doctor-result-card dl {
+  .slot-opener,
+  .doctor-result-card dl,
+  .booking-panel,
+  .appointment-card dl {
     grid-template-columns: 1fr;
   }
 
@@ -494,5 +601,13 @@ a {
 
   .doctor-map {
     min-height: 360px;
+  }
+
+  .booking-actions .primary-button {
+    width: 100%;
+  }
+
+  .slot-opener .primary-button {
+    width: 100%;
   }
 }

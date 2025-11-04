@@ -61,12 +61,18 @@ export const DashboardPage = () => {
           <Link className="primary-link-button" to="/doctors">
             Find doctors
           </Link>
+          <Link className="secondary-link-button" to="/appointments">
+            My appointments
+          </Link>
         </div>
       )}
       {profile?.role === "doctor" && (
         <div className="dashboard-actions">
           <Link className="primary-link-button" to="/doctor/onboarding">
             Complete doctor onboarding
+          </Link>
+          <Link className="secondary-link-button" to="/appointments">
+            View appointments
           </Link>
         </div>
       )}

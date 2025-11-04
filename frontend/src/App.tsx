@@ -2,6 +2,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import { AuthLayout } from "./layouts/AuthLayout";
 import { DashboardLayout } from "./layouts/DashboardLayout";
+import { AppointmentsPage } from "./pages/AppointmentsPage";
 import { DashboardPage } from "./pages/DashboardPage";
 import { DoctorOnboardingPage } from "./pages/DoctorOnboardingPage";
 import { DoctorSearchPage } from "./pages/DoctorSearchPage";
@@ -27,6 +28,9 @@ export const App = () => {
             <Route path="/dashboard/doctor" element={<DashboardPage />} />
             <Route path="/dashboard/insurance" element={<DashboardPage />} />
             <Route path="/dashboard/admin" element={<DashboardPage />} />
+            <Route element={<RoleRoute allowedRoles={["patient", "doctor"]} />}>
+              <Route path="/appointments" element={<AppointmentsPage />} />
+            </Route>
             <Route element={<RoleRoute allowedRoles={["patient"]} />}>
               <Route path="/doctors" element={<DoctorSearchPage />} />
             </Route>
