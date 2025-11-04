@@ -22,6 +22,7 @@ npm run preview
 /dashboard/insurance
 /dashboard/admin
 /doctors
+/appointments
 /doctor/onboarding
 ```
 

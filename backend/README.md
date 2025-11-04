@@ -79,3 +79,16 @@ PUT /doctors/me
 `GET /doctors` supports `specialty`, `city`, `state`, `insurance`, and `consultationMode` query filters.
 
 Socket.IO and full role-specific features will be added in later milestones.
+
+## Appointment Routes
+
+Appointment routes require a Firebase ID token.
+
+```http
+GET /appointments
+POST /appointments
+GET /appointments/slots?doctorId=<doctorId>
+POST /appointments/slots
+```
+
+Doctors open hourly availability slots. Patients can book only open slots. Patients see their own appointments; doctors see appointments booked with their doctor profile.

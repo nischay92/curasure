@@ -6,6 +6,7 @@ import { env } from "./config/env.js";
 import { errorHandler } from "./middleware/errorHandler.js";
 import { notFound } from "./middleware/notFound.js";
 import { authRoutes } from "./routes/authRoutes.js";
+import { appointmentRoutes } from "./routes/appointmentRoutes.js";
 import { doctorRoutes } from "./routes/doctorRoutes.js";
 import { healthRoutes } from "./routes/healthRoutes.js";
 
@@ -32,6 +33,7 @@ export const createApp = () => {
   app.use("/health", healthRoutes);
   app.use("/auth", authRoutes);
   app.use("/doctors", doctorRoutes);
+  app.use("/appointments", appointmentRoutes);
 
   app.use(notFound);
   app.use(errorHandler);
