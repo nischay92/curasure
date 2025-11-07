@@ -64,6 +64,9 @@ export const DashboardPage = () => {
           <Link className="secondary-link-button" to="/appointments">
             My appointments
           </Link>
+          <Link className="secondary-link-button" to="/chat">
+            Messages
+          </Link>
         </div>
       )}
       {profile?.role === "doctor" && (
@@ -73,6 +76,9 @@ export const DashboardPage = () => {
           </Link>
           <Link className="secondary-link-button" to="/appointments">
             View appointments
+          </Link>
+          <Link className="secondary-link-button" to="/chat">
+            Messages
           </Link>
         </div>
       )}

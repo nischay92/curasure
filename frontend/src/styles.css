@@ -476,6 +476,12 @@ a {
   gap: 10px;
 }
 
+.doctor-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
 .booking-actions .primary-button {
   width: auto;
 }
@@ -546,6 +552,127 @@ a {
   grid-column: 1 / -1;
 }
 
+.chat-layout {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: 20px;
+  min-height: 620px;
+  margin-top: 28px;
+}
+
+.conversation-list,
+.chat-window {
+  border: 1px solid #dfe8e2;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.conversation-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+}
+
+.conversation {
+  display: grid;
+  gap: 4px;
+  border: 0;
+  border-radius: 8px;
+  padding: 12px;
+  color: #17211b;
+  background: transparent;
+  text-align: left;
+}
+
+.conversation.active,
+.conversation:hover {
+  background: #effaf4;
+}
+
+.conversation span {
+  color: #66746d;
+  font-size: 13px;
+  text-transform: capitalize;
+}
+
+.chat-window {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 620px;
+}
+
+.chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #dfe8e2;
+  padding: 16px;
+}
+
+.chat-header h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.chat-header span {
+  color: #117b65;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.message-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+  padding: 16px;
+}
+
+.message {
+  width: min(72%, 520px);
+  border-radius: 8px;
+  padding: 10px 12px;
+  background: #f3f7f4;
+}
+
+.message.mine {
+  align-self: flex-end;
+  color: #ffffff;
+  background: #117b65;
+}
+
+.message p {
+  margin: 0;
+}
+
+.message span {
+  display: block;
+  margin-top: 6px;
+  color: inherit;
+  font-size: 12px;
+  opacity: 0.75;
+}
+
+.message-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+  border-top: 1px solid #dfe8e2;
+  padding: 12px;
+}
+
+.message-form input {
+  min-height: 46px;
+  border: 1px solid #cbd8d1;
+  border-radius: 8px;
+  padding: 0 14px;
+}
+
+.message-form .primary-button {
+  width: auto;
+}
+
 @media (max-width: 840px) {
   .auth-shell {
     grid-template-columns: 1fr;
@@ -608,6 +735,15 @@ a {
   }
 
   .slot-opener .primary-button {
+    width: 100%;
+  }
+
+  .chat-layout,
+  .message-form {
+    grid-template-columns: 1fr;
+  }
+
+  .message {
     width: 100%;
   }
 }

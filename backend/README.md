@@ -78,8 +78,6 @@ PUT /doctors/me
 
 `GET /doctors` supports `specialty`, `city`, `state`, `insurance`, and `consultationMode` query filters.
 
-Socket.IO and full role-specific features will be added in later milestones.
-
 ## Appointment Routes
 
 Appointment routes require a Firebase ID token.
@@ -92,3 +90,16 @@ POST /appointments/slots
 ```
 
 Doctors open hourly availability slots. Patients can book only open slots. Patients see their own appointments; doctors see appointments booked with their doctor profile.
+
+## Conversation Routes
+
+Conversation routes require a Firebase ID token and enforce participant access.
+
+```http
+GET /conversations
+POST /conversations
+GET /conversations/:conversationId/messages
+POST /conversations/:conversationId/messages
+```
+
+Socket.IO connections also require a Firebase ID token in the socket auth payload.

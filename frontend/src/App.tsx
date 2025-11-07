@@ -3,6 +3,7 @@ import { AuthProvider } from "./context/AuthContext";
 import { AuthLayout } from "./layouts/AuthLayout";
 import { DashboardLayout } from "./layouts/DashboardLayout";
 import { AppointmentsPage } from "./pages/AppointmentsPage";
+import { ChatPage } from "./pages/ChatPage";
 import { DashboardPage } from "./pages/DashboardPage";
 import { DoctorOnboardingPage } from "./pages/DoctorOnboardingPage";
 import { DoctorSearchPage } from "./pages/DoctorSearchPage";
@@ -30,6 +31,7 @@ export const App = () => {
             <Route path="/dashboard/admin" element={<DashboardPage />} />
             <Route element={<RoleRoute allowedRoles={["patient", "doctor"]} />}>
               <Route path="/appointments" element={<AppointmentsPage />} />
+              <Route path="/chat" element={<ChatPage />} />
             </Route>
             <Route element={<RoleRoute allowedRoles={["patient"]} />}>
               <Route path="/doctors" element={<DoctorSearchPage />} />
