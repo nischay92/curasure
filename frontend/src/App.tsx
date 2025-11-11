@@ -4,9 +4,11 @@ import { AuthLayout } from "./layouts/AuthLayout";
 import { DashboardLayout } from "./layouts/DashboardLayout";
 import { AppointmentsPage } from "./pages/AppointmentsPage";
 import { ChatPage } from "./pages/ChatPage";
+import { CoverageCheckerPage } from "./pages/CoverageCheckerPage";
 import { DashboardPage } from "./pages/DashboardPage";
 import { DoctorOnboardingPage } from "./pages/DoctorOnboardingPage";
 import { DoctorSearchPage } from "./pages/DoctorSearchPage";
+import { InsuranceProviderDashboardPage } from "./pages/InsuranceProviderDashboardPage";
 import { LoginPage } from "./pages/LoginPage";
 import { RegisterPage } from "./pages/RegisterPage";
 import { DashboardRedirect } from "./routes/DashboardRedirect";
@@ -35,9 +37,13 @@ export const App = () => {
             </Route>
             <Route element={<RoleRoute allowedRoles={["patient"]} />}>
               <Route path="/doctors" element={<DoctorSearchPage />} />
+              <Route path="/coverage" element={<CoverageCheckerPage />} />
             </Route>
             <Route element={<RoleRoute allowedRoles={["doctor"]} />}>
               <Route path="/doctor/onboarding" element={<DoctorOnboardingPage />} />
+            </Route>
+            <Route element={<RoleRoute allowedRoles={["insurance_provider"]} />}>
+              <Route path="/insurance/provider" element={<InsuranceProviderDashboardPage />} />
             </Route>
           </Route>
         </Route>

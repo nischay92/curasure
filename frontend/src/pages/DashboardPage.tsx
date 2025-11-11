@@ -67,6 +67,9 @@ export const DashboardPage = () => {
           <Link className="secondary-link-button" to="/chat">
             Messages
           </Link>
+          <Link className="secondary-link-button" to="/coverage">
+            Check coverage
+          </Link>
         </div>
       )}
       {profile?.role === "doctor" && (
@@ -79,6 +82,13 @@ export const DashboardPage = () => {
           </Link>
           <Link className="secondary-link-button" to="/chat">
             Messages
+          </Link>
+        </div>
+      )}
+      {profile?.role === "insurance_provider" && (
+        <div className="dashboard-actions">
+          <Link className="primary-link-button" to="/insurance/provider">
+            Manage plans and rules
           </Link>
         </div>
       )}

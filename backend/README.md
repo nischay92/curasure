@@ -103,3 +103,19 @@ POST /conversations/:conversationId/messages
 ```
 
 Socket.IO connections also require a Firebase ID token in the socket auth payload.
+
+## Insurance Routes
+
+Provider routes require `insurance_provider`; coverage checker requires `patient`.
+
+```http
+GET /insurance/plans
+GET /insurance/provider/me
+PUT /insurance/provider/me
+GET /insurance/provider/plans
+POST /insurance/provider/plans
+GET /insurance/provider/rules
+POST /insurance/provider/rules
+POST /insurance/coverage/check
+GET /insurance/coverage/history
+```
