@@ -24,6 +24,8 @@ npm run preview
 /doctors
 /appointments
 /chat
+/insurance/provider
+/coverage
 /doctor/onboarding
 ```
 

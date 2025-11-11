@@ -10,6 +10,7 @@ import { appointmentRoutes } from "./routes/appointmentRoutes.js";
 import { conversationRoutes } from "./routes/conversationRoutes.js";
 import { doctorRoutes } from "./routes/doctorRoutes.js";
 import { healthRoutes } from "./routes/healthRoutes.js";
+import { insuranceRoutes } from "./routes/insuranceRoutes.js";
 
 export const createApp = () => {
   const app = express();
@@ -36,6 +37,7 @@ export const createApp = () => {
   app.use("/doctors", doctorRoutes);
   app.use("/appointments", appointmentRoutes);
   app.use("/conversations", conversationRoutes);
+  app.use("/insurance", insuranceRoutes);
 
   app.use(notFound);
   app.use(errorHandler);

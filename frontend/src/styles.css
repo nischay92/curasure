@@ -673,6 +673,75 @@ a {
   width: auto;
 }
 
+.portal-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin: 28px 0;
+}
+
+.portal-panel,
+.coverage-result {
+  border: 1px solid #dfe8e2;
+  border-radius: 8px;
+  padding: 18px;
+  background: #ffffff;
+}
+
+.portal-panel h2,
+.coverage-result h2 {
+  margin: 0 0 16px;
+  font-size: 20px;
+  text-transform: capitalize;
+}
+
+.portal-panel .primary-button,
+.coverage-form .primary-button {
+  width: auto;
+}
+
+.rule-grid,
+.coverage-form {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.compact-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.compact-list span {
+  border-radius: 999px;
+  padding: 6px 10px;
+  color: #26382f;
+  background: #effaf4;
+  font-size: 13px;
+}
+
+.coverage-result {
+  margin-top: 24px;
+}
+
+.result-covered {
+  border-color: #b9dfce;
+  background: #effaf4;
+}
+
+.result-prior_authorization {
+  border-color: #f1d08a;
+  background: #fff8e8;
+}
+
+.result-not_covered,
+.result-unknown {
+  border-color: #f0b7b7;
+  background: #fff3f3;
+}
+
 @media (max-width: 840px) {
   .auth-shell {
     grid-template-columns: 1fr;
@@ -739,7 +808,10 @@ a {
   }
 
   .chat-layout,
-  .message-form {
+  .message-form,
+  .portal-grid,
+  .rule-grid,
+  .coverage-form {
     grid-template-columns: 1fr;
   }
 

@@ -36,6 +36,8 @@ curasure/
 - Milestone 11: Appointment scheduling complete with doctor-opened hourly slots.
 - Milestone 12: Secure chat foundation complete.
 - Milestone 13: Chat UI complete.
+- Milestone 14: Insurance provider portal complete.
+- Milestone 15: Patient coverage checker complete.
 
 ## Local Development
 
@@ -77,6 +79,8 @@ http://localhost:5173/dashboard
 http://localhost:5173/doctors
 http://localhost:5173/appointments
 http://localhost:5173/chat
+http://localhost:5173/insurance/provider
+http://localhost:5173/coverage
 http://localhost:5173/doctor/onboarding
 ```
 
