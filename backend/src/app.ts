@@ -7,6 +7,7 @@ import { errorHandler } from "./middleware/errorHandler.js";
 import { notFound } from "./middleware/notFound.js";
 import { authRoutes } from "./routes/authRoutes.js";
 import { appointmentRoutes } from "./routes/appointmentRoutes.js";
+import { aiRoutes } from "./routes/aiRoutes.js";
 import { conversationRoutes } from "./routes/conversationRoutes.js";
 import { doctorRoutes } from "./routes/doctorRoutes.js";
 import { healthRoutes } from "./routes/healthRoutes.js";
@@ -38,6 +39,7 @@ export const createApp = () => {
   app.use("/appointments", appointmentRoutes);
   app.use("/conversations", conversationRoutes);
   app.use("/insurance", insuranceRoutes);
+  app.use("/ai", aiRoutes);
 
   app.use(notFound);
   app.use(errorHandler);

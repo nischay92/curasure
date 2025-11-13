@@ -11,6 +11,7 @@ import { DoctorSearchPage } from "./pages/DoctorSearchPage";
 import { InsuranceProviderDashboardPage } from "./pages/InsuranceProviderDashboardPage";
 import { LoginPage } from "./pages/LoginPage";
 import { RegisterPage } from "./pages/RegisterPage";
+import { SymptomAssistantPage } from "./pages/SymptomAssistantPage";
 import { DashboardRedirect } from "./routes/DashboardRedirect";
 import { ProtectedRoute } from "./routes/ProtectedRoute";
 import { RoleRoute } from "./routes/RoleRoute";
@@ -38,6 +39,7 @@ export const App = () => {
             <Route element={<RoleRoute allowedRoles={["patient"]} />}>
               <Route path="/doctors" element={<DoctorSearchPage />} />
               <Route path="/coverage" element={<CoverageCheckerPage />} />
+              <Route path="/symptoms" element={<SymptomAssistantPage />} />
             </Route>
             <Route element={<RoleRoute allowedRoles={["doctor"]} />}>
               <Route path="/doctor/onboarding" element={<DoctorOnboardingPage />} />
