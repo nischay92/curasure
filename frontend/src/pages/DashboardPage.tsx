@@ -70,6 +70,9 @@ export const DashboardPage = () => {
           <Link className="secondary-link-button" to="/coverage">
             Check coverage
           </Link>
+          <Link className="secondary-link-button" to="/symptoms">
+            Symptom assistant
+          </Link>
         </div>
       )}
       {profile?.role === "doctor" && (

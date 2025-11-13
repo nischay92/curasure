@@ -726,6 +726,62 @@ a {
   margin-top: 24px;
 }
 
+.symptom-form {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) auto;
+  gap: 14px;
+  align-items: end;
+  margin: 28px 0;
+}
+
+.symptom-form .field {
+  margin-bottom: 0;
+}
+
+.symptom-form .primary-button {
+  width: auto;
+}
+
+.ai-result {
+  display: grid;
+  gap: 18px;
+  border: 1px solid #dfe8e2;
+  border-radius: 8px;
+  padding: 18px;
+  background: #ffffff;
+}
+
+.ai-result h2 {
+  margin: 0 0 10px;
+  font-size: 24px;
+}
+
+.source-pill {
+  display: inline-flex;
+  border-radius: 999px;
+  margin-left: 8px;
+  padding: 4px 10px;
+  color: #26382f;
+  background: #edf2f7;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.urgency-routine {
+  color: #174b38;
+  background: #dff4e9;
+}
+
+.urgency-soon {
+  color: #6c4c00;
+  background: #fff3cf;
+}
+
+.urgency-urgent {
+  color: #7d1f1f;
+  background: #fff3f3;
+}
+
 .result-covered {
   border-color: #b9dfce;
   background: #effaf4;
@@ -811,11 +867,16 @@ a {
   .message-form,
   .portal-grid,
   .rule-grid,
-  .coverage-form {
+  .coverage-form,
+  .symptom-form {
     grid-template-columns: 1fr;
   }
 
   .message {
+    width: 100%;
+  }
+
+  .symptom-form .primary-button {
     width: 100%;
   }
 }

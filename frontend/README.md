@@ -26,6 +26,7 @@ npm run preview
 /chat
 /insurance/provider
 /coverage
+/symptoms
 /doctor/onboarding
 ```
 

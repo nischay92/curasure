@@ -38,6 +38,8 @@ curasure/
 - Milestone 13: Chat UI complete.
 - Milestone 14: Insurance provider portal complete.
 - Milestone 15: Patient coverage checker complete.
+- Milestone 16: Gemini setup complete.
+- Milestone 17: AI symptom assistant complete.
 
 ## Local Development
 
@@ -81,6 +83,7 @@ http://localhost:5173/appointments
 http://localhost:5173/chat
 http://localhost:5173/insurance/provider
 http://localhost:5173/coverage
+http://localhost:5173/symptoms
 http://localhost:5173/doctor/onboarding
 ```
 

@@ -49,6 +49,7 @@ FIREBASE_PROJECT_ID=...
 FIREBASE_CLIENT_EMAIL=...
 FIREBASE_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n"
 FIREBASE_STORAGE_BUCKET=...
+GEMINI_API_KEY=...
 ```
 
 ## Auth Routes
@@ -118,4 +119,13 @@ GET /insurance/provider/rules
 POST /insurance/provider/rules
 POST /insurance/coverage/check
 GET /insurance/coverage/history
+```
+
+## AI Routes
+
+AI routes require a patient Firebase ID token. Gemini is used when `GEMINI_API_KEY` is configured; otherwise the rule-based fallback is used.
+
+```http
+POST /ai/symptoms
+GET /ai/symptoms/history
 ```
