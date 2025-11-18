@@ -8,6 +8,7 @@ import { CoverageCheckerPage } from "./pages/CoverageCheckerPage";
 import { DashboardPage } from "./pages/DashboardPage";
 import { DoctorOnboardingPage } from "./pages/DoctorOnboardingPage";
 import { DoctorSearchPage } from "./pages/DoctorSearchPage";
+import { DocumentsPage } from "./pages/DocumentsPage";
 import { InsuranceProviderDashboardPage } from "./pages/InsuranceProviderDashboardPage";
 import { LoginPage } from "./pages/LoginPage";
 import { RegisterPage } from "./pages/RegisterPage";
@@ -40,6 +41,7 @@ export const App = () => {
               <Route path="/doctors" element={<DoctorSearchPage />} />
               <Route path="/coverage" element={<CoverageCheckerPage />} />
               <Route path="/symptoms" element={<SymptomAssistantPage />} />
+              <Route path="/documents" element={<DocumentsPage />} />
             </Route>
             <Route element={<RoleRoute allowedRoles={["doctor"]} />}>
               <Route path="/doctor/onboarding" element={<DoctorOnboardingPage />} />

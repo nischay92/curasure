@@ -40,6 +40,7 @@ curasure/
 - Milestone 15: Patient coverage checker complete.
 - Milestone 16: Gemini setup complete.
 - Milestone 17: AI symptom assistant complete.
+- Milestone 18: Firebase Storage document upload complete.
 
 ## Local Development
 
@@ -84,6 +85,7 @@ http://localhost:5173/chat
 http://localhost:5173/insurance/provider
 http://localhost:5173/coverage
 http://localhost:5173/symptoms
+http://localhost:5173/documents
 http://localhost:5173/doctor/onboarding
 ```
 
