@@ -782,6 +782,51 @@ a {
   background: #fff3f3;
 }
 
+.document-upload {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: end;
+  border: 1px solid #dfe8e2;
+  border-radius: 8px;
+  margin: 28px 0;
+  padding: 18px;
+  background: #ffffff;
+}
+
+.document-upload .field {
+  margin-bottom: 0;
+}
+
+.document-upload .primary-button {
+  width: auto;
+}
+
+.document-list {
+  display: grid;
+  gap: 14px;
+}
+
+.document-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border: 1px solid #dfe8e2;
+  border-radius: 8px;
+  padding: 18px;
+  background: #ffffff;
+}
+
+.document-card h2 {
+  margin: 0 0 4px;
+  font-size: 18px;
+}
+
+.document-card p {
+  margin: 0;
+}
+
 .result-covered {
   border-color: #b9dfce;
   background: #effaf4;
@@ -868,7 +913,8 @@ a {
   .portal-grid,
   .rule-grid,
   .coverage-form,
-  .symptom-form {
+  .symptom-form,
+  .document-upload {
     grid-template-columns: 1fr;
   }
 
@@ -878,5 +924,14 @@ a {
 
   .symptom-form .primary-button {
     width: 100%;
+  }
+
+  .document-upload .primary-button {
+    width: 100%;
+  }
+
+  .document-card {
+    align-items: stretch;
+    flex-direction: column;
   }
 }

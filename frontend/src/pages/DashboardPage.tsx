@@ -73,6 +73,9 @@ export const DashboardPage = () => {
           <Link className="secondary-link-button" to="/symptoms">
             Symptom assistant
           </Link>
+          <Link className="secondary-link-button" to="/documents">
+            Documents
+          </Link>
         </div>
       )}
       {profile?.role === "doctor" && (

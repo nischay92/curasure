@@ -10,6 +10,7 @@ import { appointmentRoutes } from "./routes/appointmentRoutes.js";
 import { aiRoutes } from "./routes/aiRoutes.js";
 import { conversationRoutes } from "./routes/conversationRoutes.js";
 import { doctorRoutes } from "./routes/doctorRoutes.js";
+import { documentRoutes } from "./routes/documentRoutes.js";
 import { healthRoutes } from "./routes/healthRoutes.js";
 import { insuranceRoutes } from "./routes/insuranceRoutes.js";
 
@@ -40,6 +41,7 @@ export const createApp = () => {
   app.use("/conversations", conversationRoutes);
   app.use("/insurance", insuranceRoutes);
   app.use("/ai", aiRoutes);
+  app.use("/documents", documentRoutes);
 
   app.use(notFound);
   app.use(errorHandler);

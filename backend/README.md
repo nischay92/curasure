@@ -129,3 +129,13 @@ AI routes require a patient Firebase ID token. Gemini is used when `GEMINI_API_K
 POST /ai/symptoms
 GET /ai/symptoms/history
 ```
+
+## Document Routes
+
+Document routes require a patient Firebase ID token. File bytes are stored in Firebase Storage; MongoDB stores metadata only.
+
+```http
+GET /documents
+POST /documents
+GET /documents/:documentId/download-url
+```

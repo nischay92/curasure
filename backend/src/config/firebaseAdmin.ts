@@ -1,5 +1,6 @@
 import { cert, getApps, initializeApp } from "firebase-admin/app";
 import { getAuth } from "firebase-admin/auth";
+import { getStorage } from "firebase-admin/storage";
 import { env } from "./env.js";
 
 const requireFirebaseEnv = () => {
@@ -30,4 +31,9 @@ export const initializeFirebaseAdmin = () => {
 export const firebaseAuth = () => {
   initializeFirebaseAdmin();
   return getAuth();
+};
+
+export const firebaseStorageBucket = () => {
+  initializeFirebaseAdmin();
+  return getStorage().bucket();
 };

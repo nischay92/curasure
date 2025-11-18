@@ -27,6 +27,7 @@ npm run preview
 /insurance/provider
 /coverage
 /symptoms
+/documents
 /doctor/onboarding
 ```
 
