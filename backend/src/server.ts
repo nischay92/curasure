@@ -1,12 +1,17 @@
+import { createServer } from "node:http";
 import { createApp } from "./app.js";
 import { connectDatabase, disconnectDatabase } from "./config/database.js";
 import { env } from "./config/env.js";
+import { configureSocketServer } from "./realtime/socket.js";
 
 const app = createApp();
 
 await connectDatabase();
 
-const server = app.listen(env.port, () => {
+const server = createServer(app);
+configureSocketServer(server);
+
+server.listen(env.port, () => {
   console.log(`CuraSure backend listening on port ${env.port}`);
 });
 

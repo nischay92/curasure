@@ -1,7 +1,10 @@
 import { FormEvent, useEffect, useMemo, useState } from "react";
 import { divIcon } from "leaflet";
 import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
+import { useNavigate } from "react-router-dom";
 import { bookAppointment, fetchDoctorSlots } from "../services/appointments";
+import { getApiErrorMessage } from "../services/api";
+import { createConversation } from "../services/chat";
 import { searchDoctors, type DoctorSearchFilters } from "../services/doctors";
 import type { AvailabilitySlot } from "../types/appointment";
 import type { DoctorProfile } from "../types/doctor";
@@ -45,6 +48,7 @@ export const DoctorSearchPage = () => {
   const [appointmentReason, setAppointmentReason] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [isLoadingSlots, setIsLoadingSlots] = useState(false);
+  const [isStartingChat, setIsStartingChat] = useState(false);
   const [isBooking, setIsBooking] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
@@ -54,6 +58,7 @@ export const DoctorSearchPage = () => {
     const firstDoctor = mappedDoctors[0];
     return firstDoctor ? [firstDoctor.latitude as number, firstDoctor.longitude as number] : defaultCenter;
   }, [mappedDoctors]);
+  const navigate = useNavigate();
 
   const loadDoctors = async (nextFilters = filters) => {
     setIsLoading(true);
@@ -124,6 +129,20 @@ export const DoctorSearchPage = () => {
       setError("Unable to book that appointment. Check the time and try again.");
     } finally {
       setIsBooking(false);
+    }
+  };
+
+  const handleMessageDoctor = async (doctor: DoctorProfile) => {
+    setError(null);
+    setIsStartingChat(true);
+
+    try {
+      await createConversation({ doctorId: doctor.id });
+      navigate("/chat");
+    } catch (nextError) {
+      setError(getApiErrorMessage(nextError, "Unable to start a conversation with this doctor."));
+    } finally {
+      setIsStartingChat(false);
     }
   };
 
@@ -264,9 +283,19 @@ export const DoctorSearchPage = () => {
                   </div>
                 </div>
               ) : (
-                <button className="secondary-button" type="button" onClick={() => startBooking(doctor)}>
-                  Book appointment
-                </button>
+                <div className="doctor-actions">
+                  <button className="secondary-button" type="button" onClick={() => startBooking(doctor)}>
+                    Book appointment
+                  </button>
+                  <button
+                    className="secondary-button"
+                    disabled={isStartingChat}
+                    type="button"
+                    onClick={() => handleMessageDoctor(doctor)}
+                  >
+                    Message doctor
+                  </button>
+                </div>
               )}
             </article>
           ))}

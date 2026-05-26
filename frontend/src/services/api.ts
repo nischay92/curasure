@@ -15,3 +15,15 @@ api.interceptors.request.use(async (config) => {
 
   return config;
 });
+
+export const getApiErrorMessage = (error: unknown, fallback: string) => {
+  if (axios.isAxiosError(error)) {
+    const message = error.response?.data?.error?.message;
+
+    if (typeof message === "string") {
+      return message;
+    }
+  }
+
+  return fallback;
+};

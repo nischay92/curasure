@@ -23,6 +23,7 @@ npm run preview
 /dashboard/admin
 /doctors
 /appointments
+/chat
 /doctor/onboarding
 ```
 
