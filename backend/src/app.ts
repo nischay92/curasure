@@ -2,12 +2,14 @@ import cors from "cors";
 import express from "express";
 import helmet from "helmet";
 import morgan from "morgan";
+import rateLimit from "express-rate-limit";
 import { env } from "./config/env.js";
 import { errorHandler } from "./middleware/errorHandler.js";
 import { notFound } from "./middleware/notFound.js";
 import { authRoutes } from "./routes/authRoutes.js";
 import { appointmentRoutes } from "./routes/appointmentRoutes.js";
 import { aiRoutes } from "./routes/aiRoutes.js";
+import { adminRoutes } from "./routes/adminRoutes.js";
 import { conversationRoutes } from "./routes/conversationRoutes.js";
 import { doctorRoutes } from "./routes/doctorRoutes.js";
 import { documentRoutes } from "./routes/documentRoutes.js";
@@ -25,6 +27,14 @@ export const createApp = () => {
     })
   );
   app.use(express.json({ limit: "1mb" }));
+  app.use(
+    rateLimit({
+      windowMs: 15 * 60 * 1000,
+      limit: 300,
+      standardHeaders: true,
+      legacyHeaders: false
+    })
+  );
   app.use(morgan(env.nodeEnv === "production" ? "combined" : "dev"));
 
   app.get("/", (_req, res) => {
@@ -42,6 +52,7 @@ export const createApp = () => {
   app.use("/insurance", insuranceRoutes);
   app.use("/ai", aiRoutes);
   app.use("/documents", documentRoutes);
+  app.use("/admin", adminRoutes);
 
   app.use(notFound);
   app.use(errorHandler);

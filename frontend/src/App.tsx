@@ -2,6 +2,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import { AuthLayout } from "./layouts/AuthLayout";
 import { DashboardLayout } from "./layouts/DashboardLayout";
+import { AdminDashboardPage } from "./pages/AdminDashboardPage";
 import { AppointmentsPage } from "./pages/AppointmentsPage";
 import { ChatPage } from "./pages/ChatPage";
 import { CoverageCheckerPage } from "./pages/CoverageCheckerPage";
@@ -13,6 +14,7 @@ import { InsuranceProviderDashboardPage } from "./pages/InsuranceProviderDashboa
 import { LoginPage } from "./pages/LoginPage";
 import { RegisterPage } from "./pages/RegisterPage";
 import { SymptomAssistantPage } from "./pages/SymptomAssistantPage";
+import { TelehealthPage } from "./pages/TelehealthPage";
 import { DashboardRedirect } from "./routes/DashboardRedirect";
 import { ProtectedRoute } from "./routes/ProtectedRoute";
 import { RoleRoute } from "./routes/RoleRoute";
@@ -36,6 +38,7 @@ export const App = () => {
             <Route element={<RoleRoute allowedRoles={["patient", "doctor"]} />}>
               <Route path="/appointments" element={<AppointmentsPage />} />
               <Route path="/chat" element={<ChatPage />} />
+              <Route path="/telehealth" element={<TelehealthPage />} />
             </Route>
             <Route element={<RoleRoute allowedRoles={["patient"]} />}>
               <Route path="/doctors" element={<DoctorSearchPage />} />
@@ -48,6 +51,9 @@ export const App = () => {
             </Route>
             <Route element={<RoleRoute allowedRoles={["insurance_provider"]} />}>
               <Route path="/insurance/provider" element={<InsuranceProviderDashboardPage />} />
+            </Route>
+            <Route element={<RoleRoute allowedRoles={["admin"]} />}>
+              <Route path="/admin" element={<AdminDashboardPage />} />
             </Route>
           </Route>
         </Route>

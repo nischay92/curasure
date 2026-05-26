@@ -139,3 +139,21 @@ GET /documents
 POST /documents
 GET /documents/:documentId/download-url
 ```
+
+## Admin, Telehealth, and Seed
+
+```http
+GET /admin/users
+GET /admin/doctors
+PATCH /admin/doctors/:doctorId/verification
+GET /admin/insurance-providers
+PATCH /admin/insurance-providers/:providerId/verification
+GET /admin/audit-logs
+GET /appointments/:appointmentId/telehealth
+```
+
+Seed local demo data:
+
+```bash
+npm run seed
+```

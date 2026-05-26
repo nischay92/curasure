@@ -28,6 +28,8 @@ npm run preview
 /coverage
 /symptoms
 /documents
+/admin
+/telehealth
 /doctor/onboarding
 ```
 

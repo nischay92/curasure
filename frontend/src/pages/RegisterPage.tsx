@@ -8,8 +8,7 @@ import type { AppRole } from "../types/auth";
 const roleOptions: Array<{ label: string; value: AppRole }> = [
   { label: "Patient", value: "patient" },
   { label: "Doctor", value: "doctor" },
-  { label: "Insurance provider", value: "insurance_provider" },
-  { label: "Admin", value: "admin" }
+  { label: "Insurance provider", value: "insurance_provider" }
 ];
 
 const toMessage = (error: unknown) => {

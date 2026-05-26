@@ -18,6 +18,26 @@ authRoutes.post("/profile", verifyFirebaseToken, async (req, res, next) => {
       throw new AppError("Invalid user role", 400);
     }
 
+    const existingUser = await User.findOne({ firebaseUid: req.auth.uid });
+
+    if (!existingUser && role === "admin") {
+      throw new AppError("Admin accounts must be provisioned outside public registration", 403);
+    }
+
+    if (existingUser) {
+      res.status(200).json({
+        user: {
+          id: existingUser._id,
+          firebaseUid: existingUser.firebaseUid,
+          email: existingUser.email,
+          displayName: existingUser.displayName,
+          role: existingUser.role,
+          isActive: existingUser.isActive
+        }
+      });
+      return;
+    }
+
     const user = await User.findOneAndUpdate(
       { firebaseUid: req.auth.uid },
       {

@@ -160,6 +160,31 @@ appointmentRoutes.get("/", async (req, res, next) => {
   }
 });
 
+appointmentRoutes.get("/:appointmentId/telehealth", async (req, res, next) => {
+  try {
+    const appointment = await Appointment.findOne({
+      _id: req.params.appointmentId,
+      $or: [{ patientUserId: req.user?._id }, { doctorUserId: req.user?._id }]
+    });
+
+    if (!appointment) {
+      throw new AppError("Appointment not found", 404);
+    }
+
+    if (appointment.visitMode !== "telehealth") {
+      throw new AppError("This appointment is not a telehealth visit", 400);
+    }
+
+    const roomName = `curasure-${appointment._id}`;
+    res.status(200).json({
+      roomName,
+      url: `https://meet.jit.si/${roomName}`
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
 appointmentRoutes.post("/", async (req, res, next) => {
   try {
     if (req.user?.role !== "patient") {
