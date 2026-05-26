@@ -3,6 +3,8 @@ export type ConsultationMode = "in_person" | "telehealth";
 export interface DoctorProfile {
   id: string;
   userId: string;
+  displayName?: string;
+  email?: string;
   specialty: string;
   licenseNumber: string;
   npiNumber?: string;
@@ -14,6 +16,8 @@ export interface DoctorProfile {
   city: string;
   state: string;
   zipCode: string;
+  latitude?: number;
+  longitude?: number;
   languages: string[];
   acceptedInsurance: string[];
   consultationModes: ConsultationMode[];
@@ -33,6 +37,8 @@ export interface DoctorProfileInput {
   city: string;
   state: string;
   zipCode: string;
+  latitude?: number;
+  longitude?: number;
   languages: string[];
   acceptedInsurance: string[];
   consultationModes: ConsultationMode[];

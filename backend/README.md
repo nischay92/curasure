@@ -71,8 +71,11 @@ GET /auth/me
 Doctor routes require a Firebase ID token and a CuraSure user role of `doctor`.
 
 ```http
+GET /doctors
 GET /doctors/me
 PUT /doctors/me
 ```
+
+`GET /doctors` supports `specialty`, `city`, `state`, `insurance`, and `consultationMode` query filters.
 
 Socket.IO and full role-specific features will be added in later milestones.

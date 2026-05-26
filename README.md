@@ -31,6 +31,8 @@ curasure/
 - Milestone 6: Firebase Auth integration complete.
 - Milestone 7: Auth UI complete.
 - Milestone 8: Doctor onboarding complete.
+- Milestone 9: Patient dashboard and doctor search complete.
+- Milestone 10: Doctor map feature complete.
 
 ## Local Development
 
@@ -69,5 +71,8 @@ Frontend auth routes:
 http://localhost:5173/login
 http://localhost:5173/register
 http://localhost:5173/dashboard
+http://localhost:5173/doctors
 http://localhost:5173/doctor/onboarding
 ```
+
+Doctor map markers require doctor profiles to include latitude and longitude.

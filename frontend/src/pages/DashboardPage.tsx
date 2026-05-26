@@ -56,6 +56,13 @@ export const DashboardPage = () => {
     <>
       <h1>{content.title}</h1>
       <p>{content.intro}</p>
+      {profile?.role === "patient" && (
+        <div className="dashboard-actions">
+          <Link className="primary-link-button" to="/doctors">
+            Find doctors
+          </Link>
+        </div>
+      )}
       {profile?.role === "doctor" && (
         <div className="dashboard-actions">
           <Link className="primary-link-button" to="/doctor/onboarding">
